@@ -2,6 +2,10 @@ package entities.defaultCards;
 
 import entities.defaultCards.enums.DefaultCardColors;
 import entities.defaultCards.enums.DefaultCardTypes;
+import entities.defaultCards.enums.DefaultSpecialCards;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DefaultCard {
 
@@ -26,31 +30,42 @@ public class DefaultCard {
         this.score = score;
     }
 
-    public int getNumber() {
-        return number;
+    public DefaultCard() {
+
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public int getNumber() {
+        return number;
     }
 
     public DefaultCardColors getColor() {
         return color;
     }
 
-    public void setColor(DefaultCardColors color) {
-        this.color = color;
-    }
-
     public int getScore() {
         return score;
     }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
-
     public DefaultCardTypes getType() {
         return type;
+    }
+
+    public List<DefaultCard> instanceCards(int amount, DefaultCardColors color, int score) {
+        List<DefaultCard> cards = new ArrayList<>();
+        for (int i = 0; i < amount; i++) {
+            cards.add(new DefaultCard(i % 10, color, score));
+        }
+        return cards;
+    }
+
+    @Override
+    public String toString() {
+        return "DefaultCard{" +
+                "type=" + type +
+                ", cardDescription='" + cardDescription + '\'' +
+                ", color=" + color +
+                ", number=" + number +
+                ", score=" + score +
+                '}';
     }
 }
